@@ -23,7 +23,7 @@ import com.generation.elianespsilva.blogpessoal.model.Usuario;
 import com.generation.elianespsilva.blogpessoal.repository.UsuarioRepository;
 import com.generation.elianespsilva.blogpessoal.service.UsuarioService;
 
-@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
+@SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT) //testar na porta que tiver disponível.
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
 public class UsuarioControllerTest {
@@ -46,10 +46,10 @@ public class UsuarioControllerTest {
 	@Order(1)
 	@DisplayName("Cadastrar um usuário")
 	public void deveCriarUmUsuario() {
-
+		//envio
 		HttpEntity<Usuario> requisicao = new HttpEntity<Usuario>(
 				new Usuario(0L, "Paulo Antunes", "https://i.imgur.com/FETvs20.jpg", "paulo@email.com.br", "13465278"));
-
+		//retorno
 		ResponseEntity<Usuario> resposta = testRestTemplate.exchange("/usuarios/cadastrar", HttpMethod.POST, requisicao,
 				Usuario.class);
 
